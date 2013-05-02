@@ -1,0 +1,81 @@
+<html>
+    
+<head>
+    <title>
+        Chat
+    </title>
+</head>
+   
+    <body>
+         
+        <div id="messages" style="background-color:#00FFFF;float:left;width:90%;height:400px;overflow-y:auto;" >
+        <div id = "chat_message_box" style=" height:100%;width:100%;"></div>
+        </div>
+
+
+<div id="online_users" style="background-color:#B0E0E6;float:left;height:400px;width:10%;">
+</div> 
+
+<div id="message_form" style="background-color:#00FFFF" >
+        
+
+        <div id="content" style="background-color:#FFFFFF;float:left;width:90%;">
+            <textarea id="message_box" name="txtarea" align="left" rows="20" cols="80" style="background-color:#1E90FF;height:300px;width:100%"></textarea>
+        </div>
+
+        <div id="content" style="background-color:#FFFFFF;float:left;width:10%;">
+            <input id="send_button" type="submit" value="Send" style="background-color:#6A5ACD;height:150px; width:100%"/>
+            <input id="logout" type="submit" value="logout" style="background-color:#6A5ACD;height:150px; width:100%"/>
+        </div>
+        
+       
+    </div>
+    
+        
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>
+  var socket = io.connect('http://192.168.1.28:8080');
+
+  // on connection to server, ask for user's name with an anonymous callback
+  socket.on('connect', function(){
+    // call the server-side function 'adduser' and send one parameter (value of prompt)
+    socket.emit('adduser', prompt("What's your name?"));
+  });
+
+  // listener, whenever the server emits 'updatechat', this updates the chat body
+  socket.on('updatechat', function (username, data) {
+    $('#chat_message_box').append('<b>'+username + ':</b> ' + data + '<br>');
+  });
+
+  // listener, whenever the server emits 'updateusers', this updates the username list
+  socket.on('updateusers', function(data) {
+    $('#online_users').empty();
+    $.each(data, function(key, value) {
+      $('#online_users').append('<div>' + key + '</div>');
+    });
+  });
+
+  // on load of page
+  $(function(){
+    // when the client clicks SEND
+    $('#send_button').click( function() {
+      var message = $('#message_box').val();
+      $('#message_box').val('');
+      // tell server to execute 'sendchat' and send along one parameter
+      socket.emit('sendchat', message);
+    });
+
+    // when the client hits ENTER on their keyboard
+    $('#message_box').keypress(function(e) {
+      if(e.which == 13) {
+        $(this).blur();
+        $('#send_button').focus().click();
+      }
+    });
+  });
+
+</script>
+    </body>
+    
+</html>	

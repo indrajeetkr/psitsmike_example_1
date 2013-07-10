@@ -1,0 +1,208 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'mdns',
+1 verbose cli   '--nodedir' ]
+2 info using npm@1.2.2
+3 info using node@v0.9.8-pre
+4 verbose read json /Users/ymedialabs/node/inder/psitsmike_example_1/package.json
+5 verbose read json /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/express/package.json
+6 verbose read json /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/socket.io/package.json
+7 verbose from cache /Users/ymedialabs/node/inder/psitsmike_example_1/package.json
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'mdns', null ]
+10 verbose cache add name=undefined spec="mdns" args=["mdns",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'mdns',
+11 verbose parsed url   path: 'mdns',
+11 verbose parsed url   href: 'mdns' }
+12 silly lockFile 5e6f4f79-mdns mdns
+13 verbose lock mdns /Users/ymedialabs/.npm/5e6f4f79-mdns.lock
+14 silly lockFile 5e6f4f79-mdns mdns
+15 verbose addNamed [ 'mdns', '' ]
+16 verbose addNamed [ null, '' ]
+17 silly lockFile 5f1e5f16-mdns mdns@
+18 verbose lock mdns@ /Users/ymedialabs/.npm/5f1e5f16-mdns.lock
+19 silly addNameRange { name: 'mdns', range: '', hasData: false }
+20 verbose url raw mdns
+21 verbose url resolving [ 'https://registry.npmjs.org/', './mdns' ]
+22 verbose url resolved https://registry.npmjs.org/mdns
+23 info trying registry request attempt 1 at 09:58:36
+24 verbose etag "BM6UG0PIAUZY6ACJYAB64A53N"
+25 http GET https://registry.npmjs.org/mdns
+26 http 304 https://registry.npmjs.org/mdns
+27 silly registry.get cb [ 304,
+27 silly registry.get   { server: 'CouchDB/1.3.0 (Erlang OTP/R15B03)',
+27 silly registry.get     etag: '"BM6UG0PIAUZY6ACJYAB64A53N"',
+27 silly registry.get     date: 'Fri, 03 May 2013 04:21:45 GMT',
+27 silly registry.get     'content-length': '0' } ]
+28 verbose etag mdns from cache
+29 silly addNameRange number 2 { name: 'mdns', range: '', hasData: true }
+30 silly addNameRange versions [ 'mdns',
+30 silly addNameRange   [ '0.0.3', '0.0.4', '0.0.5', '0.0.6', '0.0.7', '1.0.0', '1.1.0' ] ]
+31 verbose addNamed [ 'mdns', '1.1.0' ]
+32 verbose addNamed [ '1.1.0', '1.1.0' ]
+33 silly lockFile d9a67a42-mdns-1-1-0 mdns@1.1.0
+34 verbose lock mdns@1.1.0 /Users/ymedialabs/.npm/d9a67a42-mdns-1-1-0.lock
+35 verbose read json /Users/ymedialabs/.npm/mdns/1.1.0/package/package.json
+36 silly lockFile d9a67a42-mdns-1-1-0 mdns@1.1.0
+37 silly lockFile 5f1e5f16-mdns mdns@
+38 silly resolved [ { name: 'mdns',
+38 silly resolved     version: '1.1.0',
+38 silly resolved     description: 'multicast DNS service discovery',
+38 silly resolved     main: './lib/mdns.js',
+38 silly resolved     scripts: { test: 'node utils/testrun', install: 'node-gyp rebuild' },
+38 silly resolved     keywords: [ 'zeroconf', 'bonjour', 'dns_sd', 'mDNSResponder' ],
+38 silly resolved     devDependencies:
+38 silly resolved      { ejs: '*',
+38 silly resolved        less: '*',
+38 silly resolved        mkdirp: '*',
+38 silly resolved        nopt: '*',
+38 silly resolved        slide: '*',
+38 silly resolved        glob: '*',
+38 silly resolved        ncp: '*',
+38 silly resolved        minimatch: '*' },
+38 silly resolved     repository: { type: 'git', url: 'http://github.com/agnat/node_mdns.git' },
+38 silly resolved     homepage: 'http://agnat.github.com/node_mdns',
+38 silly resolved     bugs: { url: 'http://github.com/agnat/node_mdns/issues' },
+38 silly resolved     licenses: [ [Object] ],
+38 silly resolved     author: { name: 'David Siegel', email: 'david@artcom.de' },
+38 silly resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+38 silly resolved     gypfile: true,
+38 silly resolved     readme: 'h1. mdns -- node.js Service Discovery\n\n|_. Package:       | mdns |\n|_. Description:   | multicast DNS service discovery |\n|_. Version:       | 1.1.0 |\n|_. Installation:  | @npm install mdns@ (see below) |\n|_. Documentation: | "mdns user guide":http://agnat.github.com/node_mdns/user_guide.html |\n|_. License:       | "MIT":http://github.com/agnat/node_mdns/blob/master/LICENSE |\n|_. Donations:     | !http://api.flattr.com/button/flattr-badge-large.png(Flattr this git repository)!:https://flattr.com/submit/auto?user_id=agnat&url=https://github.com/agnat/node_mdns&title=node_mdns&tags=github&category=software |\n\nmdns adds multicast DNS service discovery, also known as zeroconf or bonjour to "node.js":/joyent/node. It provides an object based interface to announce and browse services on the local network.\n\nh2. Synopsis\n\nbc.. // import the module\nvar mdns = require(\'mdns\');\n\n// advertise a http server on port 4321\nvar ad = mdns.createAdvertisement(mdns.tcp(\'http\'), 4321);\nad.start();\n\n// watch all http servers\nvar browser = mdns.createBrowser(mdns.tcp(\'http\'));\nbrowser.on(\'serviceUp\', function(service) {\n  console.log("service up: ", service);\n});\nbrowser.on(\'serviceDown\', function(service) {\n  console.log("service down: ", service);\n});\nbrowser.start();\n\n// discover all available service types\nvar all_the_types = mdns.browseThemAll(); // all_the_types is just another browser...\n\nh2. Installation\n\nOn Linux and other systems using the avahi daemon the avahi dns_sd compat library and its header files are required.  On debianesque systems the package name is @libavahi-compat-libdnssd-dev@.  On other platforms Apples "mDNSResponder":http://opensource.apple.com/tarballs/mDNSResponder/ is recommended. Care should be taken not to install more than one mDNS stack on a system. \n\nOn Windows you are going to need Apples "Bonjour SDK for Windows". You can download it either from Apple (registration required) or various unofficial sources. Take your pick. After installing the SDK restart your shell or command prompt and make sure the @BONJOUR_SDK_HOME@ environment variable is set. You\'ll also need a compiler. Microsoft Visual Studio Express will do. On Windows node >=0.7.9 is required.\n\nmdns is available as a npm package:\n\nbc. npm install mdns\n\nIf you want to play with the latest source code, here is a more manual approach:\n\nbc.. git clone http://github.com/agnat/node_mdns\ncd node_mdns\nnpm link && npm test\n\nh2. Documentation\n\nSee the "user guide":http://agnat.github.com/node_mdns/user_guide.html.\n\nh2. Contributors\n\n... in random order:\n\n* Orlando Vazquez ("@orlandov":http://github.com/orlandov)\n* Ryan Dahl ("@ry":http://github.com/ry)\n* Dominic Tarr ("@dominictarr":http://github.com/dominictarr)\n* Emil Stenqvist ("@emilisto":http://github.com/emilisto)\n* Toby Ealden ("@TobyEalden":http://github.com/TobyEalden)\n\nYour name is missing on the list? Shame on me. Please open an issue.\n\nh2. Bugs and Contributions\n\nIf you find a bug, please report it using the "issue tracker":http://github.com/agnat/node_mdns/issues.\n\n<!-- vim: set linebreak filetype=textile spell spelllang=en_us : -->\n',
+38 silly resolved     readmeFilename: 'README.textile',
+38 silly resolved     _id: 'mdns@1.1.0',
+38 silly resolved     _from: 'mdns@' } ]
+39 info install mdns@1.1.0 into /Users/ymedialabs/node/inder/psitsmike_example_1
+40 info installOne mdns@1.1.0
+41 verbose from cache /Users/ymedialabs/.npm/mdns/1.1.0/package/package.json
+42 info /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns unbuild
+43 verbose read json /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns/package.json
+44 verbose tar unpack /Users/ymedialabs/.npm/mdns/1.1.0/package.tgz
+45 silly lockFile 0ce3cfbd-mike-example-1-node-modules-mdns /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns
+46 verbose lock /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns /Users/ymedialabs/.npm/0ce3cfbd-mike-example-1-node-modules-mdns.lock
+47 silly gunzTarPerm modes [ '755', '644' ]
+48 silly gunzTarPerm extractEntry package.json
+49 silly gunzTarPerm extractEntry .npmignore
+50 silly gunzTarPerm extractEntry LICENSE
+51 silly gunzTarPerm extractEntry Makefile
+52 silly gunzTarPerm extractEntry README.textile
+53 silly gunzTarPerm extractEntry binding.gyp
+54 silly gunzTarPerm extractEntry examples/express_app.js
+55 silly gunzTarPerm extractEntry examples/simple_ad.js
+56 silly gunzTarPerm extractEntry examples/simple_browser.js
+57 silly gunzTarPerm extractEntry CHANGES
+58 silly gunzTarPerm extractEntry node-waf.bat
+59 silly gunzTarPerm extractEntry wscript
+60 silly gunzTarPerm extractEntry src/mdns_settings.hpp
+61 silly gunzTarPerm extractEntry src/demangle.cpp
+62 silly gunzTarPerm extractEntry src/dns_service_browse.cpp
+63 silly gunzTarPerm extractEntry src/dns_service_enumerate_domains.cpp
+64 silly gunzTarPerm extractEntry src/dns_service_get_addr_info.cpp
+65 silly gunzTarPerm extractEntry src/dns_service_process_result.cpp
+66 silly gunzTarPerm extractEntry src/dns_service_ref.cpp
+67 silly gunzTarPerm extractEntry src/dns_service_ref.hpp
+68 silly gunzTarPerm extractEntry src/dns_service_ref_deallocate.cpp
+69 silly gunzTarPerm extractEntry src/dns_service_ref_sock_fd.cpp
+70 silly gunzTarPerm extractEntry src/dns_service_register.cpp
+71 silly gunzTarPerm extractEntry src/dns_service_resolve.cpp
+72 silly gunzTarPerm extractEntry src/mdns.hpp
+73 silly gunzTarPerm extractEntry src/dns_sd.cpp
+74 silly gunzTarPerm extractEntry src/mdns_utils.cpp
+75 silly gunzTarPerm extractEntry src/mdns_utils.hpp
+76 silly gunzTarPerm extractEntry src/network_interface.cpp
+77 silly gunzTarPerm extractEntry src/skeleton.cpp_
+78 silly gunzTarPerm extractEntry src/socket_watcher.cpp
+79 silly gunzTarPerm extractEntry src/socket_watcher.hpp
+80 silly gunzTarPerm extractEntry src/txt_record_buffer_to_object.cpp
+81 silly gunzTarPerm extractEntry src/txt_record_create.cpp
+82 silly gunzTarPerm extractEntry src/txt_record_deallocate.cpp
+83 silly gunzTarPerm extractEntry src/txt_record_get_length.cpp
+84 silly gunzTarPerm extractEntry src/txt_record_ref.cpp
+85 silly gunzTarPerm extractEntry src/txt_record_ref.hpp
+86 silly gunzTarPerm extractEntry src/txt_record_set_value.cpp
+87 silly gunzTarPerm extractEntry tests/test_dns_sd.js
+88 silly gunzTarPerm extractEntry tests/test_functional.js
+89 silly gunzTarPerm extractEntry tests/test_network_interface.js
+90 silly gunzTarPerm extractEntry tests/test_odd_ends.js
+91 silly gunzTarPerm extractEntry tests/test_service_type.js
+92 silly gunzTarPerm extractEntry utils/coverage
+93 silly gunzTarPerm extractEntry utils/docpack
+94 silly gunzTarPerm extractEntry utils/jsf
+95 silly gunzTarPerm extractEntry utils/lib/actors.js
+96 silly gunzTarPerm extractEntry utils/lib/bunch.js
+97 silly gunzTarPerm extractEntry utils/lib/compiler.js
+98 silly gunzTarPerm extractEntry utils/lib/lcov.js
+99 silly gunzTarPerm extractEntry utils/lib/mdns_test.js
+100 silly gunzTarPerm extractEntry utils/lib/ncov.js
+101 silly gunzTarPerm extractEntry utils/lib/obj.js
+102 silly gunzTarPerm extractEntry utils/lib/view.js
+103 silly gunzTarPerm extractEntry utils/render_report
+104 silly gunzTarPerm extractEntry utils/testrun
+105 silly gunzTarPerm extractEntry lib/advertisement.js
+106 silly gunzTarPerm extractEntry lib/avahi.js
+107 silly gunzTarPerm extractEntry lib/browser.js
+108 silly gunzTarPerm extractEntry lib/dns_sd.js
+109 silly gunzTarPerm extractEntry lib/io_watcher.js
+110 silly gunzTarPerm extractEntry lib/mdns.js
+111 silly gunzTarPerm extractEntry lib/mdns_service.js
+112 silly gunzTarPerm extractEntry lib/network_interface.js
+113 silly gunzTarPerm extractEntry lib/resolver_sequence_tasks.js
+114 silly gunzTarPerm extractEntry lib/service_type.js
+115 verbose read json /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns/package.json
+116 silly lockFile 0ce3cfbd-mike-example-1-node-modules-mdns /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns
+117 info preinstall mdns@1.1.0
+118 verbose from cache /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns/package.json
+119 verbose readDependencies using package.json deps
+120 verbose from cache /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns/package.json
+121 verbose readDependencies using package.json deps
+122 silly resolved []
+123 verbose about to build /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns
+124 info build /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns
+125 verbose from cache /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns/package.json
+126 verbose linkStuff [ false,
+126 verbose linkStuff   false,
+126 verbose linkStuff   false,
+126 verbose linkStuff   '/Users/ymedialabs/node/inder/psitsmike_example_1/node_modules' ]
+127 info linkStuff mdns@1.1.0
+128 verbose linkBins mdns@1.1.0
+129 verbose linkMans mdns@1.1.0
+130 verbose rebuildBundles mdns@1.1.0
+131 info install mdns@1.1.0
+132 verbose unsafe-perm in lifecycle false
+133 verbose set uid from=0 to=502
+134 silly exec sh "-c" "node-gyp rebuild"
+135 silly sh,-c,node-gyp rebuild,/Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns spawning
+136 info mdns@1.1.0 Failed to exec install script
+137 info /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns unbuild
+138 verbose from cache /Users/ymedialabs/node/inder/psitsmike_example_1/node_modules/mdns/package.json
+139 info preuninstall mdns@1.1.0
+140 info uninstall mdns@1.1.0
+141 verbose true,/Users/ymedialabs/node/inder/psitsmike_example_1/node_modules,/Users/ymedialabs/node/inder/psitsmike_example_1/node_modules unbuild mdns@1.1.0
+142 info postuninstall mdns@1.1.0
+143 error mdns@1.1.0 install: `node-gyp rebuild`
+143 error `sh "-c" "node-gyp rebuild"` failed with 1
+144 error Failed at the mdns@1.1.0 install script.
+144 error This is most likely a problem with the mdns package,
+144 error not with npm itself.
+144 error Tell the author that this fails on your system:
+144 error     node-gyp rebuild
+144 error You can get their info via:
+144 error     npm owner ls mdns
+144 error There is likely additional logging output above.
+145 error System Darwin 11.4.2
+146 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "mdns" "--nodedir"
+147 error cwd /Users/ymedialabs/node/inder/psitsmike_example_1
+148 error node -v v0.9.8-pre
+149 error npm -v 1.2.2
+150 error code ELIFECYCLE
+151 verbose exit [ 1, true ]

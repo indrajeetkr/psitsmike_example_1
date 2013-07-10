@@ -24,6 +24,7 @@ io.sockets.on('connection', function (socket) {
 
   // when the client emits 'adduser', this listens and executes
   socket.on('adduser', function(username){
+    console.log("ADD USER IS CALLED");
     // we store the username in the socket session for this client
     socket.username = username;
     // add the client's username to the global list
@@ -38,6 +39,7 @@ io.sockets.on('connection', function (socket) {
 
   // when the user disconnects.. perform this
   socket.on('disconnect', function(){
+    console.log("DISCONNECT is called");
     // remove the username from global usernames list
     delete usernames[socket.username];
     // update list of users in chat, client-side

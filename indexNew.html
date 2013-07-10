@@ -67,6 +67,7 @@
         var message = $('#message_box').val();
         if(!emptyString.test(message)) {
           $('#message_box').val('');
+
         // tell server to execute 'sendchat' and send along one parameter
         socket.emit('sendchat', message);
         $('#message_box').focus();
@@ -82,7 +83,12 @@
         if(e.which == 13) {
           $(this).blur();
           $('#send_button').click();
+          e.preventDefault();
         }
+      });
+
+      $('#logout').click(function () {
+        socket.emit('disconnect', alert(socket.username));
       });
     });
 
